@@ -55,7 +55,7 @@ const Homepage = () => {
             type='button'
             onClick={updateShallowRoute}
           >
-            {t('shallow-route', {counter: counter + 1})}
+            {t('EDER_NAME')}
           </button>
         </div>
       </main>

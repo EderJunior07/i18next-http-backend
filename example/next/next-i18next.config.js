@@ -1,17 +1,16 @@
-const HttpBackend = require('i18next-http-backend/cjs')
-const ChainedBackend= require('i18next-chained-backend').default
-const LocalStorageBackend = require('i18next-localstorage-backend').default
+const I18NextHttpBackend = require("i18next-http-backend");
 
 module.exports = {
-  backend: {
-    backendOptions: [{ expirationTime: 60 * 60 * 1000 }, {}], // 1 hour
-    backends: typeof window !== 'undefined' ? [LocalStorageBackend, HttpBackend]: [],
-  },
-  // debug: true,
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'de'],
+    defaultLocale: "en",
+    locales: ["en"],
+
+    backend: {
+      loadPath: `https://d3tmwynvs73u9l.cloudfront.net/public/locales/us/common.json`,
+    },
   },
+  debug: true,
+  ns: ["common", "employees", "projects"],
   serializeConfig: false,
-  use: typeof window !== 'undefined' ? [ChainedBackend] : [],
-}
+  use: [I18NextHttpBackend],
+};
